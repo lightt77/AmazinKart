@@ -31,8 +31,7 @@ public class ProductService
     {
         List<Product> products = getProducts();
         products.forEach(product -> {
-            product.setPrice(exchangeRatesService.convertToINR(product.getPrice(), product.getCurrency()));
-            product.setCurrency("INR");
+            exchangeRatesService.convertPricesToINR(product);
             discountService.applyDiscounts(product, promotionSet);
         });
         writeToJsonFile(products);

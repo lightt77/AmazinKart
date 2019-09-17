@@ -1,6 +1,7 @@
 package com.abhishek.AmazinKart.services;
 
 import com.abhishek.AmazinKart.models.ExchangeRates;
+import com.abhishek.AmazinKart.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -26,13 +27,14 @@ public class ExchangeRatesService
         refreshExchangeRates();
     }
 
-    public int convertToINR(int value, String currency)
+    public void convertPricesToINR(Product product)
     {
-        if (currency.equals("INR"))
-            return value;
-        if (!exchangeRates.containsKey(currency))
-            throw new RuntimeException("Currency " + currency + " not available in current exchange rates.");
-        return (int)((value / exchangeRates.get(currency)) * exchangeRates.get("INR"));
+        if (product.getCurrency().equals("INR"))
+            return;
+        if (!exchangeRates.containsKey(product.getCurrency()))
+            throw new RuntimeException("Currency " + product.getCurrency() + " not available in current exchange rates.");
+        product.setPrice((int) ((product.getPrice() / exchangeRates.get(product.getCurrency())) * exchangeRates.get("INR")));
+        product.setCurrency("INR");
     }
 
     private void refreshExchangeRates()
