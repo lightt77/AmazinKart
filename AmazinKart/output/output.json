@@ -2,7 +2,6 @@
   {
     "category": "electronics",
     "inventory": 10,
-    "arrival": null,
     "rating": 3,
     "currency": "INR",
     "price": 2500,
@@ -13,7 +12,6 @@
   {
     "category": "electronics",
     "inventory": 5,
-    "arrival": null,
     "rating": 1,
     "currency": "INR",
     "price": 4500,
@@ -24,18 +22,15 @@
   {
     "category": "clothing",
     "inventory": 50,
-    "arrival": null,
     "rating": 4,
     "currency": "INR",
     "price": 1800,
     "origin": "Asia",
-    "product": "Jeet white shoes",
-    "discount": null
+    "product": "Jeet white shoes"
   },
   {
     "category": "grooming",
     "inventory": 10,
-    "arrival": null,
     "rating": 2,
     "currency": "INR",
     "price": 150,
@@ -57,7 +52,6 @@
   {
     "category": "toys",
     "inventory": 10,
-    "arrival": null,
     "rating": 2,
     "currency": "INR",
     "price": 4049,
@@ -68,18 +62,15 @@
   {
     "category": "books",
     "inventory": 5,
-    "arrival": null,
     "rating": 4,
     "currency": "INR",
     "price": 3508,
     "origin": "America",
-    "product": "Zen and The art of motorcycle maintenance",
-    "discount": null
+    "product": "Zen and The art of motorcycle maintenance"
   },
   {
     "category": "apparels",
     "inventory": 10,
-    "arrival": null,
     "rating": 4,
     "currency": "INR",
     "price": 2098,
@@ -90,7 +81,6 @@
   {
     "category": "home",
     "inventory": 30,
-    "arrival": null,
     "rating": 4,
     "currency": "INR",
     "price": 490,
@@ -101,23 +91,19 @@
   {
     "category": "accessories",
     "inventory": 10,
-    "arrival": null,
     "rating": 3,
     "currency": "INR",
     "price": 190,
     "origin": "Asia",
-    "product": "iron man mousepad",
-    "discount": null
+    "product": "iron man mousepad"
   },
   {
     "category": "furnishing",
     "inventory": 45,
-    "arrival": null,
     "rating": 3,
     "currency": "INR",
     "price": 190,
     "origin": "Asia",
-    "product": "lunch box",
-    "discount": null
+    "product": "lunch box"
   }
 ]
