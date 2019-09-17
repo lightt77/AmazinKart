@@ -20,13 +20,16 @@ public class ProductService
     private String PRODUCT_DETAILS_URL;
     @Autowired
     private ExchangeRatesService exchangeRatesService;
+    @Autowired
+    private DiscountService discountService;
 
-    public void generateDiscountedProducts()
+    public void generateDiscountedProducts(String promotionSet)
     {
         List<Product> products = getProducts();
         products.forEach(product -> {
             product.setPrice(exchangeRatesService.convertToINR(product.getPrice(), product.getCurrency()));
             product.setCurrency("INR");
+            discountService.applyDiscounts(product, promotionSet);
         });
     }
 

@@ -24,6 +24,6 @@ public class AmazinKartApplication implements CommandLineRunner
     @Override
     public void run(String... args) throws Exception
     {
-        productService.generateDiscountedProducts();
+        productService.generateDiscountedProducts(args[0]);
     }
 }

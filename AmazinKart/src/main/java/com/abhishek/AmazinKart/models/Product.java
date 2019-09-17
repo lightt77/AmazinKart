@@ -10,6 +10,7 @@ public class Product
     private int price;
     private String origin;
     private String product;
+    private Discount discount;
 
     public String getCategory()
     {
@@ -89,5 +90,15 @@ public class Product
     public void setProduct(String product)
     {
         this.product = product;
+    }
+
+    public Discount getDiscount()
+    {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount)
+    {
+        this.discount = discount;
     }
 }
