@@ -54,6 +54,7 @@ public class DiscountService
             discount.setAmount(Double.toString(currentDiscountAmount));
             discount.setDiscountTag(currentDiscountTag);
             product.setDiscount(discount);
+            product.setPrice(product.getPrice() - (int)currentDiscountAmount);
         }
     }
 
@@ -80,6 +81,7 @@ public class DiscountService
             discount.setAmount(Double.toString(currentDiscountAmount));
             discount.setDiscountTag(currentDiscountTag);
             product.setDiscount(discount);
+            product.setPrice(product.getPrice() - (int)currentDiscountAmount);
         }
     }
 
@@ -88,8 +90,11 @@ public class DiscountService
         if (product.getPrice() > 1000 && product.getDiscount() == null)
         {
             Discount discount = new Discount();
-            discount.setAmount(Double.toString(product.getPrice() * 0.02d));
+            double discountAmount = product.getPrice() * 0.02d;
+            discount.setAmount(Double.toString(discountAmount));
             discount.setDiscountTag("get 2% off");
+            product.setDiscount(discount);
+            product.setPrice(product.getPrice() - (int)discountAmount);
         }
     }
 }
