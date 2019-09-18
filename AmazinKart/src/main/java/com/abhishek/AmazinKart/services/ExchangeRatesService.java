@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -17,7 +18,7 @@ public class ExchangeRatesService
     private RestTemplate restTemplate;
     private String EXCHANGE_RATES_URL;
     private HashMap<String, Double> exchangeRates;
-    private Date lastRefreshTime;
+    private LocalDate exchangeRatesLastRefreshDate;
 
     @Autowired
     public ExchangeRatesService(RestTemplate restTemplate, @Value("${exchangeRatesUrl}") String exchangeRatesUrl)
@@ -29,6 +30,8 @@ public class ExchangeRatesService
 
     public void convertPricesToINR(Product product)
     {
+        if(exchangeRatesLastRefreshDate.isBefore(LocalDate.now()))
+            refreshExchangeRates();
         if (product.getCurrency().equals("INR"))
             return;
         if (!exchangeRates.containsKey(product.getCurrency()))
@@ -46,7 +49,6 @@ public class ExchangeRatesService
         if (!ratesMap.containsKey("INR"))
             throw new RuntimeException("INR not available in current exchange rates.");
         this.exchangeRates = ratesMap;
-        // TODO:
-        // this.lastRefreshTime = new SimpleDateFormat("YYYY-MM-DD").parse(freshExchangeRates.getDate());
+        this.exchangeRatesLastRefreshDate = LocalDate.parse(freshExchangeRates.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 }
